@@ -9,7 +9,19 @@
 // Hint: Utilize the string prototype method charCodeAt and generic method fromCharCode
 
 function letterChecker(str) {
-
+    let alphabet = "abcdefghijklmnopqrstuvwxyz"
+    for (let i = 0; i < alphabet.length; i++) {
+        if (alphabet[i] == str[0]) {
+            for (let j = 0; j < str.length; j++) {
+                if (alphabet[i] == str[j]) {
+                    i++
+                } else if (alphabet[i] != str[j]) {
+                    return alphabet[i]
+                }
+            }
+        }
+    }
+    return "no missing letters"
 }
 
 
@@ -23,6 +35,15 @@ function letterChecker(str) {
 // output: true (because 4+3)
 
 function sumEqualsTarget(arr, target) {
+
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+            if (arr[i] + arr[j] == target) {
+                return true
+            }
+        }
+    }
+    return false
 }
 
 
@@ -36,4 +57,20 @@ function sumEqualsTarget(arr, target) {
 // output: [2, 1, 4, 3, 6, 6, 5, 9, 8]
 
 function oddAscender(arr) {
+    let newArr = []
+    let e = 0
+    let o = 0
+    let odd = arr.filter(odd => odd % 2 == 1)
+    let even = arr.filter(even => even % 2 == 0)
+    odd.sort((a, b) => a - b)
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] % 2 == 0) {
+            newArr.push(even[e])
+            e++
+        } else {
+            newArr.push(odd[o])
+            o++
+        }
+    }
+    return newArr
 }
